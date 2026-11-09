@@ -1,0 +1,8 @@
+<Window x:Class="MisWpf.Views.RegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:v="clr-namespace:MisWpf.Views"
+        Title="Новое поступление" Width="1240" Height="860" WindowStartupLocation="CenterOwner"
+        Background="{StaticResource Bg}" FontFamily="{StaticResource AppFont}">
+    <v:RegistrationView />
+</Window>

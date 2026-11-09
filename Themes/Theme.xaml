@@ -1,0 +1,303 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:inf="clr-namespace:MisWpf.Infrastructure">
+
+    <!-- ============ ЦВЕТА ============ -->
+    <Color x:Key="InkColor">#17212B</Color>
+    <SolidColorBrush x:Key="Ink" Color="#17212B" />
+    <SolidColorBrush x:Key="Ink2" Color="#3D4A56" />
+    <SolidColorBrush x:Key="Muted" Color="#5B6875" />
+    <SolidColorBrush x:Key="Line" Color="#DCE2E8" />
+    <SolidColorBrush x:Key="LineSoft" Color="#EEF1F4" />
+    <SolidColorBrush x:Key="InputLine" Color="#CBD3DB" />
+    <SolidColorBrush x:Key="Bg" Color="#F3F5F7" />
+    <SolidColorBrush x:Key="BgSoft" Color="#F8FAFB" />
+    <SolidColorBrush x:Key="Surface" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="Chip" Color="#EEF1F4" />
+
+    <SolidColorBrush x:Key="Accent" Color="#1F6F8B" />
+    <SolidColorBrush x:Key="AccentDark" Color="#155468" />
+    <SolidColorBrush x:Key="AccentBg" Color="#E3F1F6" />
+    <SolidColorBrush x:Key="AccentLine" Color="#8FC0D2" />
+
+    <SolidColorBrush x:Key="Warn" Color="#7A4700" />
+    <SolidColorBrush x:Key="WarnBg" Color="#FFF3DC" />
+    <SolidColorBrush x:Key="WarnLine" Color="#E0A43A" />
+
+    <SolidColorBrush x:Key="Danger" Color="#B42318" />
+    <SolidColorBrush x:Key="DangerBg" Color="#FDECEA" />
+    <SolidColorBrush x:Key="DangerLine" Color="#F3B4AE" />
+    <SolidColorBrush x:Key="DangerSolid" Color="#D92D20" />
+
+    <SolidColorBrush x:Key="Ok" Color="#1E7A46" />
+    <SolidColorBrush x:Key="OkBg" Color="#E6F4EC" />
+    <SolidColorBrush x:Key="OkLine" Color="#9FD3B4" />
+    <SolidColorBrush x:Key="OkSolid" Color="#2E9E5F" />
+
+    <SolidColorBrush x:Key="Neutral" Color="#B7C2CC" />
+
+    <!-- Цвет боковой панели для каждой роли -->
+    <SolidColorBrush x:Key="SidebarDoctor" Color="#17384A" />
+    <SolidColorBrush x:Key="SidebarNurse" Color="#2B3A55" />
+    <SolidColorBrush x:Key="SidebarLab" Color="#1E4D3A" />
+
+    <inf:VisibleIfConverter x:Key="VisibleIf" />
+
+    <FontFamily x:Key="AppFont">Segoe UI</FontFamily>
+    <FontFamily x:Key="MonoFont">Consolas</FontFamily>
+    <FontFamily x:Key="IconFont">Segoe Fluent Icons, Segoe MDL2 Assets</FontFamily>
+
+    <!-- ============ КНОПКИ ============ -->
+    <Style x:Key="Btn" TargetType="Button">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{StaticResource Ink}" />
+        <Setter Property="Background" Value="{StaticResource Surface}" />
+        <Setter Property="BorderBrush" Value="{StaticResource InputLine}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="14,7" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="b" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="7" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="b" Property="Background" Value="{StaticResource Bg}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="b" Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BtnPrimary" TargetType="Button" BasedOn="{StaticResource Btn}">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{StaticResource Accent}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Accent}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="b" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1" CornerRadius="7" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="b" Property="Background" Value="{StaticResource AccentDark}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="b" Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BtnSmall" TargetType="Button" BasedOn="{StaticResource Btn}">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Padding" Value="9,3" />
+    </Style>
+
+    <!-- Пункт меню в боковой панели -->
+    <Style x:Key="NavButton" TargetType="Button">
+        <Setter Property="Foreground" Value="#DCE8EE" />
+        <Setter Property="FontSize" Value="13.5" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="b" Background="Transparent" CornerRadius="7" Padding="12,9">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="b" Property="Background" Value="#22FFFFFF" />
+                        </Trigger>
+                        <Trigger Property="Tag" Value="active">
+                            <Setter TargetName="b" Property="Background" Value="#24FFFFFF" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Вариант ответа в критерии осмотра.
+         DataContext — OptionVm (IsSelected, IsNormal). Норма — синим, отклонение — жёлтым. -->
+    <Style x:Key="OptionChip" TargetType="Button">
+        <Setter Property="FontSize" Value="12.5" />
+        <Setter Property="Foreground" Value="{StaticResource Ink}" />
+        <Setter Property="Background" Value="{StaticResource Surface}" />
+        <Setter Property="BorderBrush" Value="{StaticResource InputLine}" />
+        <Setter Property="Margin" Value="0,0,5,5" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="b" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1" CornerRadius="6" Padding="10,4">
+                        <ContentPresenter VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="b" Property="BorderBrush" Value="#8FA3B3" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="b" Property="BorderBrush" Value="{StaticResource Accent}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected}" Value="True" />
+                    <Condition Binding="{Binding IsNormal}" Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="{StaticResource AccentBg}" />
+                <Setter Property="BorderBrush" Value="{StaticResource Accent}" />
+                <Setter Property="Foreground" Value="{StaticResource AccentDark}" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected}" Value="True" />
+                    <Condition Binding="{Binding IsNormal}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="{StaticResource WarnBg}" />
+                <Setter Property="BorderBrush" Value="{StaticResource WarnLine}" />
+                <Setter Property="Foreground" Value="{StaticResource Warn}" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Переключатель с выбором (сторона, уточнение, профиль анализов). DataContext — объект с IsSelected. -->
+    <Style x:Key="ToggleChip" TargetType="Button" BasedOn="{StaticResource OptionChip}">
+        <Setter Property="FontSize" Value="12" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                <Setter Property="Background" Value="{StaticResource WarnBg}" />
+                <Setter Property="BorderBrush" Value="{StaticResource WarnLine}" />
+                <Setter Property="Foreground" Value="{StaticResource Warn}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="SelectChip" TargetType="Button" BasedOn="{StaticResource OptionChip}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                <Setter Property="Background" Value="{StaticResource AccentBg}" />
+                <Setter Property="BorderBrush" Value="{StaticResource Accent}" />
+                <Setter Property="Foreground" Value="{StaticResource AccentDark}" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- ============ ПОЛЯ ВВОДА ============ -->
+    <Style x:Key="Input" TargetType="TextBox">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Foreground" Value="{StaticResource Ink}" />
+        <Setter Property="Background" Value="{StaticResource Surface}" />
+        <Setter Property="BorderBrush" Value="{StaticResource InputLine}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="6,5" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="b" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6">
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="b" Property="BorderBrush" Value="{StaticResource Accent}" />
+                            <Setter TargetName="b" Property="BorderThickness" Value="1.5" />
+                        </Trigger>
+                        <Trigger Property="IsReadOnly" Value="True">
+                            <Setter TargetName="b" Property="Background" Value="{StaticResource BgSoft}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="InputMulti" TargetType="TextBox" BasedOn="{StaticResource Input}">
+        <Setter Property="AcceptsReturn" Value="True" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="MinHeight" Value="54" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+    </Style>
+
+    <Style x:Key="FieldLabel" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12.5" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{StaticResource Ink}" />
+        <Setter Property="Margin" Value="0,10,0,4" />
+    </Style>
+
+    <Style x:Key="Hint" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Foreground" Value="{StaticResource Muted}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+
+    <Style x:Key="GroupTitle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="11.5" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{StaticResource Muted}" />
+    </Style>
+
+    <!-- ============ КАРТОЧКИ ============ -->
+    <Style x:Key="Panel" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource Surface}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Line}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="12" />
+    </Style>
+
+    <Style x:Key="Badge" TargetType="Border">
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="Padding" Value="7,2" />
+        <Setter Property="Margin" Value="4,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <!-- Кнопка-карточка (очередь пациентов, заказы лаборатории) -->
+    <Style x:Key="CardButton" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="0,0,0,6" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <ContentPresenter />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ListCombo" TargetType="ComboBox">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="6,5" />
+        <Setter Property="MinHeight" Value="30" />
+    </Style>
+
+</ResourceDictionary>
